@@ -21,4 +21,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           passphrase: ${{ secrets.EC2_SSH_PASSPHRASE }}
           source: "."
-          target: "/home/ubuntu"
+          target: "/home/ubuntu/poc"
