@@ -24,7 +24,7 @@ jobs:
           target: "/home/ubuntu/poc"
 
       - name: Build and run Docker containers on EC2
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v0.1.8
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
