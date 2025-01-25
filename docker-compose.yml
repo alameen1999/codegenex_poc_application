@@ -1,0 +1,17 @@
+services:
+  # api:
+  #   image: error-simulator-app
+  #   build: .
+  #   ports:
+  #     - "5000:5000"
+  #   command: python app.py  # Run the Flask API
+  #   restart: always
+
+  streamlit:
+    image: error-simulator-app
+    build: .
+    ports:
+      - "8501:8501"
+    command: streamlit run streamlit_app.py --server.port=8501 --server.address=0.0.0.0  # Run the Streamlit app
+    depends_on:
+      - api
