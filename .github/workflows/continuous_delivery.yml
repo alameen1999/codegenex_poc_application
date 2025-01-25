@@ -22,3 +22,15 @@ jobs:
           passphrase: ${{ secrets.EC2_SSH_PASSPHRASE }}
           source: "."
           target: "/home/ubuntu/poc"
+
+      - name: Build and run Docker containers on EC2
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          passphrase: ${{ secrets.EC2_SSH_PASSPHRASE }}
+          script: |
+            cd /home/ubuntu/poc
+            docker compose down
+            docker compose up -d --build          
