@@ -1,21 +1,19 @@
 import streamlit as st
 import requests
 import os
+import numpy as np
 
 # Title of the Streamlit app
 st.title("Error Simulator API Caller")
 
-my_var = os.getenv("MY_VAR")
+# my_var = os.getenv("MY_VAR")
 
 # Description
 st.write("Click the button below to call the `/simulate-error` API and shut down the server.")
 
 # Button to call the API
 if st.button("Simulate Minor Error"):
-    if not my_var:
-        raise EnvironmentError("Environment variable 'MY_VAR' not found!")
-    else:
-        st.info(f"MY_VAR is set to: {my_var}")
+    st.write("Here is a random number:", np.random.rand())
 
 if st.button("Simulate Major Error1"):
     my_list = [1, 2, 3]
