@@ -1,7 +1,6 @@
 import streamlit as st
 import requests
 import os
-import numpy as np
 
 # Title of the Streamlit app
 st.title("Error Simulator API Caller")
@@ -13,7 +12,7 @@ st.write("Click the button below to call the `/simulate-error` API and shut down
 
 # Button to call the API
 if st.button("Simulate Minor Error"):
-    st.write("Here is a random number:", np.random.rand())
+    os._exit(0)
 
 if st.button("Simulate Major Error1"):
     my_list = [1, 2, 3]
