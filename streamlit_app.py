@@ -5,13 +5,17 @@ import os
 # Title of the Streamlit app
 st.title("Error Simulator API Caller")
 
+my_var = os.getenv("MY_VAR")
+
 # Description
 st.write("Click the button below to call the `/simulate-error` API and shut down the server.")
 
 # Button to call the API
 if st.button("Simulate Minor Error"):
-    raise ValueError("Container stopped do a docker container restart")
-    os._exit(0)
+    if not my_var:
+        raise EnvironmentError("Environment variable 'MY_VAR' not found!")
+    else:
+        print(f"MY_VAR is set to: {my_var}")
 
 if st.button("Simulate Major Error1"):
     my_list = [1, 2, 3]
