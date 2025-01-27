@@ -15,7 +15,7 @@ if st.button("Simulate Minor Error"):
     if not my_var:
         raise EnvironmentError("Environment variable 'MY_VAR' not found!")
     else:
-        print(f"MY_VAR is set to: {my_var}")
+        st.info(f"MY_VAR is set to: {my_var}")
 
 if st.button("Simulate Major Error1"):
     my_list = [1, 2, 3]
