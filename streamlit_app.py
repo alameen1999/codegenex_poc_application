@@ -23,7 +23,7 @@ with col1:
             st.success("File written successfully!")
         except PermissionError as e:
             error_message = f"Permission Error: {e}"
-            st.error("An error occurred! Check Docker logs.")
+            st.error(error_message)
             logging.error(error_message)
 
     if st.button("Simulate Major Error 1"):
@@ -32,7 +32,7 @@ with col1:
             print(my_list[10])  # This will raise an IndexError
         except IndexError as e:  # Correct exception type
             error_message = f"Index Error: {e}"
-            st.error("An error occurred! Check Docker logs.")
+            st.error(error_message)
             logging.error(error_message)
 
 
