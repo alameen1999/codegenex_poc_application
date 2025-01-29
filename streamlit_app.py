@@ -3,6 +3,7 @@ import requests
 import os
 import sys
 import logging
+import traceback
 
 # Title of the Streamlit app
 st.title("Error Simulator Applicaiton")
@@ -27,13 +28,11 @@ with col1:
             logging.error(error_message)
 
     if st.button("Simulate Major Error 1"):
-        try:
-            my_list = [1, 2, 3]
-            print(my_list[10])  # This will raise an IndexError
-        except IndexError as e:  # Correct exception type
-            error_message = f"Index Error: {e}"
-            st.error(error_message)
-            logging.error(error_message)
+        my_list = [1, 2, 3]
+        print(my_list[10])
+        stack_trace = traceback.format_exc()
+        st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
+        logging.error(stack_trace)
 
 
 with col2:
@@ -51,10 +50,8 @@ with col2:
             logging.error(error_message)
 
     if st.button("Simulate Major Error 2"):
-        try:
-            my_dict = {"key1": "value1"}
-            print(my_dict["key2"])  # This will raise a KeyError
-        except KeyError as e:  # Catching KeyError properly
-            error_message = f"Key Error: {e}"
-            st.error("An error occurred! Check Docker logs.")
-            logging.error(error_message)
+        my_dict = {"key1": "value1"}
+        print(my_dict["key2"]) 
+        stack_trace = traceback.format_exc()
+        st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
+        logging.error(stack_trace)
