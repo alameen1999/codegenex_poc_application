@@ -32,7 +32,7 @@ with col1:
             my_list = [1, 2, 3]
             print(my_list[10])
         except Exception as e: 
-            stack_trace = traceback.format_exc()
+            stack_trace = traceback.format_exc().replace('\n', ' ')
             st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
             logging.error(stack_trace)
 
@@ -57,6 +57,6 @@ with col2:
             print(my_dict["key2"])
             error_message = f"An error occurred: {e}"
         except Exception as e: 
-            stack_trace = traceback.format_exc()
+            stack_trace = traceback.format_exc().replace('\n', ' ')
             st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
             logging.error(stack_trace)
