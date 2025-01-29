@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
 import os
+import sys
+import logging
 
 # Title of the Streamlit app
 st.title("Error Simulator Applicaiton")
