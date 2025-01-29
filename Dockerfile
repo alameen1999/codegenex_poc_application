@@ -1,20 +1,24 @@
-# Use an official Python runtime as the base image
-FROM python:3.10-slim
+# Use official Python image
+FROM python:3.9
 
-# Set the working directory in the container
+# Set working directory
 WORKDIR /app
 
-# Copy the requirements file into the container
-COPY requirements.txt .
+# Install Streamlit
+RUN pip install streamlit
 
-# Install the dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Create a folder with restricted permissions
+RUN mkdir /restricted_folder && chmod 000 /restricted_folder
 
-# Copy the rest of the application code
-COPY . .
+# Copy application files
+COPY app.py /app/
 
-# Expose ports for Flask and Streamlit  
-EXPOSE 8501 
+# Expose port
+EXPOSE 8501
 
-# Default command (can be overridden in docker-compose.yml)
-CMD ["python", "app.py"]
+# Run the Streamlit app as a non-root user
+RUN useradd -m appuser
+USER appuser
+
+# Start Streamlit
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
