@@ -24,15 +24,17 @@ with col1:
             st.success("File written successfully!")
         except PermissionError as e:
             error_message = f"Permission Error: {e}"
-            st.error(error_message)
+            st.error("An error occurred! Check Docker logs.")
             logging.error(error_message)
 
     if st.button("Simulate Major Error 1"):
-        my_list = [1, 2, 3]
-        print(my_list[10])
-        stack_trace = traceback.format_exc()
-        st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
-        logging.error(stack_trace)
+        try:
+            my_list = [1, 2, 3]
+            print(my_list[10])
+        except Exception as e: 
+            stack_trace = traceback.format_exc()
+            st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
+            logging.error(stack_trace)
 
 
 with col2:
@@ -50,8 +52,11 @@ with col2:
             logging.error(error_message)
 
     if st.button("Simulate Major Error 2"):
-        my_dict = {"key1": "value1"}
-        print(my_dict["key2"]) 
-        stack_trace = traceback.format_exc()
-        st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
-        logging.error(stack_trace)
+        try:
+            my_dict = {"key1": "value1"}
+            print(my_dict["key2"])
+            error_message = f"An error occurred: {e}"
+        except Exception as e: 
+            stack_trace = traceback.format_exc()
+            st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
+            logging.error(stack_trace)
