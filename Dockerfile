@@ -8,10 +8,11 @@ WORKDIR /app
 RUN pip install streamlit
 
 # Create a folder with restricted permissions
-RUN mkdir /restricted_folder && chmod 000 /restricted_folder
+RUN mkdir /restricted_folder_1 && chmod 000 /restricted_folder_1
+RUN mkdir /restricted_folder_2 && chmod 000 /restricted_folder_2
 
 # Copy application files
-COPY app.py /app/
+COPY streamlit_app.py /app/
 
 # Expose port
 EXPOSE 8501
