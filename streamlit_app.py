@@ -31,7 +31,7 @@ with col1:
 
     if st.button("Simulate Major Error 1"):
         try:
-            result = divide_numbers(5, 2)  # Pass both required arguments
+            result = divide_numbers(5)  # Pass both required arguments
             st.success(f"Result: {result}")
         except TypeError as e:
             stack_trace = traceback.format_exc().replace('\n', ' ')
@@ -57,7 +57,7 @@ with col2:
 
     if st.button("Simulate Major Error 2"):
         try:
-            result = add_numbers(5, 3)  # Pass both required arguments
+            result = add_numbers(5)  # Pass both required arguments
             st.success(f"Result: {result}")
         except TypeError as e:
             stack_trace = traceback.format_exc().replace('\n', ' ')
