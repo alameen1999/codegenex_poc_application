@@ -6,6 +6,8 @@ WORKDIR /app
 
 # Install Streamlit
 RUN pip install streamlit
+RUN mkdir /restricted_folder_1 && chmod 000 /restricted_folder_1
+RUN mkdir /restricted_folder_2 && chmod 000 /restricted_folder_2
 
 # Copy application files
 COPY major_error.py /app/
