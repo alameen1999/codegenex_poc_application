@@ -21,7 +21,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           passphrase: ${{ secrets.EC2_SSH_PASSPHRASE }}
           source: "."
-          target: "/home/ubuntu/poc"
+          target: "/home/ubuntu/codegenex"
 
       - name: Build and run Docker containers on EC2
         uses: appleboy/ssh-action@v0.1.8
@@ -31,7 +31,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           passphrase: ${{ secrets.EC2_SSH_PASSPHRASE }}
           script: |
-            cd /home/ubuntu/poc
+            cd /home/ubuntu/codegenex
             sudo docker compose down
             sudo docker compose up -d --build
             cd /home/ubuntu/codegenex/docker_monitor
