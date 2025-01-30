@@ -6,7 +6,7 @@ import logging
 import traceback
 
 # Title of the Streamlit app
-st.title("Error Simulator Applicaiton")
+st.title("Error Simulator Application")
 
 logging.basicConfig(stream=sys.stderr, level=logging.ERROR)
 
@@ -31,7 +31,7 @@ def add_numbers(a, b):
 
 if st.button("Simulate Major Error"):
     try:
-        result = add_numbers(5)  # ERROR: Missing one argument
+        result = add_numbers(5, 10)  # Pass two arguments
         st.success(f"Result: {result}")
     except TypeError as e:
         stack_trace = traceback.format_exc().replace('\n', ' ')
@@ -57,7 +57,7 @@ if st.button("Simulate Major Error"):
 
 #     if st.button("Simulate Major Error 2"):
 #         try:
-#             result = add_numbers(5)  # ERROR: Missing one argument
+#             result = add_numbers(5, 10)  # Pass two arguments
 #             st.success(f"Result: {result}")
 #         except TypeError as e:
 #             stack_trace = traceback.format_exc().replace('\n', ' ')
