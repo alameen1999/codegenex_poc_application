@@ -31,7 +31,7 @@ def add_numbers(a, b):
 
 if st.button("Simulate Major Error"):
     try:
-        result = add_numbers(5)  # ERROR: Missing one argument
+        result = add_numbers(5, 10)  # Pass two arguments
         st.success(f"Result: {result}")
     except TypeError as e:
         stack_trace = traceback.format_exc().replace('\n', ' ')
