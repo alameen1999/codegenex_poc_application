@@ -55,7 +55,10 @@ with col2:
     if st.button("Simulate Major Error 2"):
         try:
             my_dict = {"key1": "value1"}
-            print(my_dict["key2"])
+            if "key2" in my_dict:
+                print(my_dict["key2"])
+            else:
+                st.error("Key 'key2' not found in the dictionary.")
         except Exception as e: 
             stack_trace = traceback.format_exc().replace('\n', ' ')
             st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
