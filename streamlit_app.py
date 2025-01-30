@@ -33,7 +33,7 @@ with col1:
                 print(my_list[10])
             else:
                 st.error("Index is out of range for the list.")
-        except Exception as e: 
+        except Exception as e:
             stack_trace = traceback.format_exc().replace('\n', ' ')
             st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
             logging.error(stack_trace)
@@ -55,8 +55,8 @@ with col2:
     if st.button("Simulate Major Error 2"):
         try:
             my_dict = {"key1": "value1"}
-            print(my_dict["key2"])
-        except Exception as e: 
+            print(my_dict.get("key2", "Default value"))
+        except Exception as e:
             stack_trace = traceback.format_exc().replace('\n', ' ')
             st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
             logging.error(stack_trace)
