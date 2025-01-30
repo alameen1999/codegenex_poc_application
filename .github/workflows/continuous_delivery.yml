@@ -34,4 +34,4 @@ jobs:
             cd /home/ubuntu/codegenex/codegenex_poc_application
             sudo docker compose down
             sudo docker compose up -d --build
-            cd /home/ubuntu/codegenex && sqlite3 mydatabase.db "INSERT INTO lambda_logs (classification, prlink, reason, solution, is_minor_fix, pr_status) VALUES ('', '', '', '', 0, 1);"
+            cd /home/ubuntu/codegenex/docker_monitor && sqlite3 mydatabase.db "INSERT INTO lambda_logs (classification, prlink, reason, solution, is_minor_fix, pr_status) VALUES ('major', '', '', '', 0, 1);"

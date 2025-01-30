@@ -1,17 +1,18 @@
-services:
-  # api:
-  #   image: error-simulator-app
-  #   build: .
-  #   ports:
-  #     - "5000:5000"
-  #   command: python app.py  # Run the Flask API
-  #   restart: always
 
-  streamlit:
-    image: error-simulator-app
+
+services:
+  major:
+    container_name: major
+    image: error_simulator
     build: .
     ports:
-      - "8501:8501"
-    command: streamlit run streamlit_app.py --server.port=8501 --server.address=0.0.0.0  # Run the Streamlit app
-    # depends_on:
-    #   - api
+      - "8505:8501"
+    command: streamlit run major_error.py --server.port=8501 --server.address=0.0.0.0 
+
+  minor:
+    container_name: minor
+    image: error_simulator
+    build: .
+    ports:
+      - "8506:8501"
+    command: streamlit run minor_error.py --server.port=8501 --server.address=0.0.0.0 
