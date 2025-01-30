@@ -6,7 +6,7 @@ import logging
 import traceback
 
 # Title of the Streamlit app
-st.title("Error Simulator Applicaiton")
+st.title("Error Simulator Application")
 
 logging.basicConfig(stream=sys.stderr, level=logging.ERROR)
 
@@ -55,7 +55,11 @@ with col2:
     if st.button("Simulate Major Error 2"):
         try:
             my_dict = {"key1": "value1"}
-            print(my_dict["key2"])
+            result = my_dict.get("key2", None)
+            if result is None:
+                st.error("The requested key does not exist in the dictionary.")
+            else:
+                print(result)
         except Exception as e: 
             stack_trace = traceback.format_exc().replace('\n', ' ')
             st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
