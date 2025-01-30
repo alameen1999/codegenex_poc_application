@@ -26,16 +26,16 @@ with col1:
             st.error("An error occurred! Check Docker logs.")
             logging.error(error_message)
 
+    def divide_numbers(a, b):
+        return a / b
+
     if st.button("Simulate Major Error 1"):
         try:
-            my_list = [1, 2, 3]
-            if len(my_list) > 10:
-                print(my_list[10])
-            else:
-                st.error("Index is out of range for the list.")
-        except Exception as e: 
+            result = divide_numbers(5)  # ERROR: Missing one argument
+            st.success(f"Result: {result}")
+        except TypeError as e:
             stack_trace = traceback.format_exc().replace('\n', ' ')
-            st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
+            st.error(f"Function Call Error! Check Docker logs.\n{stack_trace}")
             logging.error(stack_trace)
 
 with col2:
@@ -52,11 +52,14 @@ with col2:
             st.error("An error occurred! Check Docker logs.")
             logging.error(error_message)
 
+    def add_numbers(a, b):
+        return a + b
+
     if st.button("Simulate Major Error 2"):
         try:
-            my_dict = {"key1": "value1"}
-            print(my_dict["key2"])
-        except Exception as e: 
+            result = add_numbers(5)  # ERROR: Missing one argument
+            st.success(f"Result: {result}")
+        except TypeError as e:
             stack_trace = traceback.format_exc().replace('\n', ' ')
-            st.error(f"An error occurred! Check Docker logs.\n{stack_trace}")
+            st.error(f"Function Call Error! Check Docker logs.\n{stack_trace}")
             logging.error(stack_trace)
